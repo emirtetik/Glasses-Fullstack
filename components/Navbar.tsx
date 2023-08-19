@@ -17,14 +17,15 @@ const Navbar = () => {
     const [showProfile, setShowProfile] = useState(false)
     const [showNav, setShowNav] = useState(false)
     const {data:session} = useSession()
-    console.log(session?.user);
+    // console.log(session?.user);
+    
     const SignOut = () => {
          if(session && session.user){
            return(
             <ul className='py-5 px-1 text-gray-600'>
 
               <li className='hover:bg-gray-100 px-5 py-2 cursor-pointer'>{session.user.name}</li>
-              <li onClick={() => signOut()} className='whitespace-nowrap hover:text-gray-900 cursor-pointer'>Sign Out</li>
+              <li onClick={() => signOut()} className='whitespace-nowrap hover:text-gray-900 px-5  cursor-pointer'>Sign Out</li>
               <li className="whitespace-nowrap hover:bg-gray-100 px-5 py-2 cursor-pointer">
                 <a href="/addProduct">Add Product</a>
               </li>
@@ -40,8 +41,8 @@ const Navbar = () => {
 
     const navList: NavList[] = [
         { name: 'Mağaza', href: '/' },
-        { name: 'Filter', href: '/about' },
-        { name: 'Ürünler', href: '/products' },
+        { name: 'Filter', href: '/filter' },
+        { name: 'Ürünler', href: '/addProduct' },
       ];
 
   return (
@@ -88,7 +89,7 @@ const Navbar = () => {
             ))}
             {session?.user && (
   <li className='py-3 inline-block w-full'>
-      <Link href="/products" className={pathname === '/products' ? 'text-red-500 font-bold' : ''}>
+      <Link href="/products" className={pathname === '/addProduct' ? 'text-red-500 font-bold' : ''}>
           Ürünler
       </Link>
   </li>
